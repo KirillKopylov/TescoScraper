@@ -1,14 +1,28 @@
+from abc import ABC
+
 import scrapy
 from items.tesco.tesco_item import TescoItem
 from items.tesco.review_item import ReviewItem
 from items.tesco.usually_bought_next_item import UsuallyBoughtNextItem
 from urllib.parse import urljoin, urlparse
+import logging
+from scrapy.utils.log import configure_logging
+from datetime import datetime
 
 
-class TescoSpider(scrapy.Spider):
+class TescoSpider(scrapy.Spider, ABC):
     name = 'tesco_spider'
-    domain = 'https://tesco.com'
-    url = 'https://www.tesco.com/groceries/en-GB/shop/household/kitchen-roll-and-tissues/all'
+    domain = 'https://www.tesco.com'
+    url = None
+    configure_logging(install_root_handler=False)
+    logging.basicConfig(
+        filename=datetime.now().strftime("%d-%m-%Y %H-%M-%S_log.txt"),
+        format='%(levelname)s: %(message)s'
+    )
+
+    def __init__(self, url='', **kwargs):
+        self.url = url
+        super().__init__(**kwargs)
 
     def start_requests(self):
         yield scrapy.Request(url=self.url, callback=self.get_item_url)

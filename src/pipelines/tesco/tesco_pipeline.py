@@ -11,10 +11,6 @@ session = Session()
 
 
 class TescoPipeline:
-    def open_spider(self, spider):
-        session.execute('TRUNCATE TABLE tesco_parser')
-        session.commit()
-
     def process_item(self, item, spider):
         if not isinstance(item, TescoItem):
             return item
