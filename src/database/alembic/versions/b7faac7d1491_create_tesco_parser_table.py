@@ -25,7 +25,7 @@ def upgrade():
         sa.Column('image_url', sa.String(length=255)),
         sa.Column('product_title', sa.String(length=255)),
         sa.Column('category', sa.String(length=255)),
-        sa.Column('price', sa.String(length=255)),
+        sa.Column('price', sa.DECIMAL(10, 2)),
         sa.Column('product_description', sa.Text),
         sa.Column('name_and_address', sa.String(length=255)),
         sa.Column('return_address', sa.Text),

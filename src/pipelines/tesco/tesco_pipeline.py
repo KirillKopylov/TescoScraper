@@ -53,8 +53,10 @@ class TescoPipeline:
                     }
                 }
                 usually_bought_next.append(values)
-            tesco.review = json.dumps(reviews)
-            tesco.usually_bought_next_products = json.dumps(usually_bought_next)
+            if len(reviews) != 0:
+                tesco.review = json.dumps(reviews)
+            if len(usually_bought_next) != 0:
+                tesco.usually_bought_next_products = json.dumps(usually_bought_next)
             session.add(tesco)
             session.commit()
         session.execute('TRUNCATE TABLE tesco_reviews')

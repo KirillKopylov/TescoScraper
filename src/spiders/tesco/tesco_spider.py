@@ -20,7 +20,7 @@ class TescoSpider(scrapy.Spider, ABC):
         format='%(levelname)s: %(message)s'
     )
 
-    def __init__(self, url='', **kwargs):
+    def __init__(self, url=None, **kwargs):
         self.url = url
         super().__init__(**kwargs)
 
