@@ -40,8 +40,8 @@ https://www.tesco.com/groceries/en-GB/shop/pets/cat-food-and-accessories/all
      - Usually Bought Next Products (array of objects):
        - Product URL (string)
        - Product Title (string)
-2. Product Image URL (string)
-3. Price (float)
+       - Product Image URL (string)
+       - Price (float)
 
 
 Требования к реализации:
