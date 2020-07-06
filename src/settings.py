@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+from dotenv import load_dotenv
+from os import getenv
+
+load_dotenv()
 
 # Scrapy settings for tesco_parser project
 #
@@ -9,14 +13,22 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'tesco_parser'
+BOT_NAME = 'tesco_scraper'
 
-SPIDER_MODULES = ['spiders.tesco']
+SPIDER_MODULES = ['spiders']
 NEWSPIDER_MODULE = 'spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT = \
     'Mozilla/5.0 (Windows NT 10.; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36'
+
+DB_HOST = getenv('DB_HOST', '127.0.0.1')
+DB_PORT = int(getenv('DB_PORT', 3306))
+DB_DATABASE = getenv('DB_DATABASE', 'tesco')
+DB_USERNAME = getenv('DB_USERNAME', 'root')
+DB_PASSWORD = getenv('DB_PASSWORD', 'root')
+DATABASE_URL = 'mysql://' + DB_USERNAME + ':' + DB_PASSWORD + '@' + DB_HOST + ':' + str(
+    DB_PORT) + '/' + DB_DATABASE + '?charset=utf8'
 
 # Obey robots.txt rules
 # ROBOTSTXT_OBEY = True
@@ -65,9 +77,7 @@ CONCURRENT_REQUESTS = 5
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'pipelines.tesco.tesco_pipeline.TescoPipeline': 300,
-    'pipelines.tesco.review_pipeline.ReviewPipeline': 300,
-    'pipelines.tesco.usually_bought_next_pipeline.UsuallyBoughtNextPipeline': 300
+    'pipelines.ProductPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

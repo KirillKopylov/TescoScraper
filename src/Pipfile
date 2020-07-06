@@ -11,6 +11,7 @@ sqlalchemy = "*"
 alembic = "*"
 mysqlclient = "*"
 python-dotenv = "*"
+furl = "*"
 
 [requires]
 python_version = "3.8"
