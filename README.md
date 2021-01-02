@@ -98,7 +98,7 @@ pipenv run scrapy crawl tesco_spider -a url=
 параметр url указывает на ссылку, содержимое которой необходимо собрать. Например:
 
 ```console
-pipenv run scrapy crawl tesco_spider -a url=https://www.tesco.com/groceries/en-GB/shop/household/kitchen-roll-and-tissues/all 
+pipenv run scrapy crawl tesco -a url=https://www.tesco.com/groceries/en-GB/shop/household/kitchen-roll-and-tissues/all 
 ```
 
 Парсер работает со ссылками вида https://www.tesco.com/groceries/en-GB/shop/*
