@@ -93,7 +93,7 @@ cd ..
 Запуск парсера осуществляется с помощью следующей команды:
 
 ```console
-pipenv run scrapy crawl tesco_spider -a url=
+pipenv run scrapy crawl tesco -a url=
 ```
 параметр url указывает на ссылку, содержимое которой необходимо собрать. Например:
 
